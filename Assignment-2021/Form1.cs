@@ -64,7 +64,7 @@ namespace Assignment_2021
                 y += height;
                 x = 0;
             }
-
+            //
             SolidBrush br = new SolidBrush(Color.Red);
 
             int[] shipDimensions = new int[] { 50, 55, 25, 35 };
