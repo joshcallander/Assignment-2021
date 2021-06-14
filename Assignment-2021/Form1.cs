@@ -45,39 +45,66 @@ namespace Assignment_2021
         {
             username = textBoxUsername.Text;
 
-            int x = 0;
-            int y = 0;
-            int width = 65;
-            int height = 65;
+            int x = 66;
+            int y = 66;
+            int width = 66;
+            int height = 66;
+            int rowCount = 1;
 
             Graphics paper = panelGame.CreateGraphics();
             Pen pen1 = new Pen(Color.Black, 2);
 
-            for (int row = 0; row < 8; row++)
+            Font drawFont = new Font("Arial", 14);
+
+            StringFormat drawFormat = new StringFormat();
+
+            drawFormat.FormatFlags = StringFormatFlags.DirectionRightToLeft;
+
+            SolidBrush brush = new SolidBrush(Color.Black);
+
+            string[] columnLetters = new string[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" };
+
+            for (int row = 1; row <= 10; row++)
             {
-                for (int column = 0; column < 8; column++)
+                x = 0;
+                paper.DrawRectangle(pen1, x, y, width, height);
+                paper.DrawString(row.ToString(), drawFont, brush, (x + 40), (y + 26), drawFormat);
+
+                x = 66;
+
+                for (int column = 0; column < 10; column++)
                 {
                     paper.DrawRectangle(pen1, x, y, width, height);
                     x += width;
                 }
 
                 y += height;
-                x = 0;
+                x = 66;
             }
+
+            y = 0;
+            x = 66;
+
+            for (int column = 1; column <= 10; column++)
+            {
+                paper.DrawRectangle(pen1, x, y, width, height);
+
+                paper.DrawString(columnLetters[column-1], drawFont, brush, (x + 40), (y + 26), drawFormat);
+                x += width;
+            }
+
             //
             SolidBrush br = new SolidBrush(Color.Red);
 
             int[] shipDimensions = new int[] { 50, 55, 25, 35 };
             int shipX = 100;
-            int shipY = 550;
+            int shipY = 750;
 
             for (int ship = 0; ship < shipDimensions.Length; ship++)
             {
-                Rectangle shipRectangle[ship] = new Rectangle();
+                
                 paper.FillRectangle(br, shipX, shipY, shipDimensions[ship], shipDimensions[ship]);
                 shipX += shipDimensions[ship] + 50;
-
-                rect.X = e.X - MouseDownLocation.X;
             }
         }
     }
