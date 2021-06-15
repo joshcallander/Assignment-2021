@@ -51,7 +51,7 @@ namespace Assignment_2021
             this.panelGame.Controls.Add(this.textBoxUsername);
             this.panelGame.Location = new System.Drawing.Point(0, 27);
             this.panelGame.Name = "panelGame";
-            this.panelGame.Size = new System.Drawing.Size(1170, 835);
+            this.panelGame.Size = new System.Drawing.Size(1170, 1034);
             this.panelGame.TabIndex = 0;
             // 
             // label1
@@ -144,7 +144,7 @@ namespace Assignment_2021
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1170, 861);
+            this.ClientSize = new System.Drawing.Size(1170, 1061);
             this.Controls.Add(this.panelGame);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
