@@ -17,7 +17,10 @@ namespace Assignment_2021
         public Form1()
         {
             InitializeComponent();
+            this.DoubleBuffered = true;
         }
+
+        
 
         private void newGameToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -42,6 +45,8 @@ namespace Assignment_2021
         Random rand = new Random();
 
         string[] columnLetters = new string[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" };
+
+        bool isMouseDown = false;
 
         private void buttonStartGame_Click(object sender, EventArgs e)
         {
@@ -95,15 +100,23 @@ namespace Assignment_2021
                 x += width;
             }
 
-            int[] shipDimensions = new int[] { 50, 55, 25, 35 };
             int shipX = 20;
             int shipY = 750;
+
+            
 
             string[] shipDimensionsLetter = new string[] { "A", "B", "D", "D", "G", "J", "A", "A", "J", "J", "E", "J" };
             int[] shipDimensionsNumber = new int[] { 1, 1, 1, 3, 1, 1, 3, 6, 3, 4, 6, 6 };
 
             for (int ship = 0; ship < shipDimensionsLetter.Length; ship += 2)
             {
+                Rectangle battleShip = new Rectangle(shipX, shipY, CalculateWidth(shipDimensionsLetter[ship], shipDimensionsLetter[ship + 1]), CalculateHeight(shipDimensionsNumber[ship], shipDimensionsNumber[ship + 1]));
+                battleShip.Name = "battleShip" + ship.ToString();
+
+                
+
+
+
                 paper.FillRectangle(brush, shipX, shipY, CalculateWidth(shipDimensionsLetter[ship], shipDimensionsLetter[ship + 1]), CalculateHeight(shipDimensionsNumber[ship], shipDimensionsNumber[ship + 1]));
                 shipX += CalculateWidth(shipDimensionsLetter[ship], shipDimensionsLetter[ship + 1]) + 44;
             }
@@ -127,7 +140,7 @@ namespace Assignment_2021
                 }
             }
 
-            return (((endLetterValue - startLetterValue) + 1) * 50);
+            return ((endLetterValue - startLetterValue + 1) * 50);
         }
 
         private int CalculateHeight(int startNumber, int endNumber)
@@ -148,7 +161,25 @@ namespace Assignment_2021
                 }
             }
 
-            return (((endNumberValue - startNumberValue) + 1) * 50);
+            return ((endNumberValue - startNumberValue + 1) * 50);
+        }
+
+        private void panelGame_MouseUp(object sender, MouseEventArgs e)
+        {
+            isMouseDown = false;
+        }
+
+        private void panelGame_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (isMouseDown == true)
+            {
+                
+            }
+        }
+
+        private void panelGame_MouseDown(object sender, MouseEventArgs e)
+        {
+            isMouseDown = true;
         }
     }
 }
