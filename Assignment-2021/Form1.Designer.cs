@@ -53,6 +53,7 @@ namespace Assignment_2021
             this.panelGame.Name = "panelGame";
             this.panelGame.Size = new System.Drawing.Size(1170, 1034);
             this.panelGame.TabIndex = 0;
+            this.panelGame.Paint += new System.Windows.Forms.PaintEventHandler(this.panelGame_Paint);
             this.panelGame.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelGame_MouseDown);
             this.panelGame.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelGame_MouseMove);
             this.panelGame.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelGame_MouseUp);
