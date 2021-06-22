@@ -29,6 +29,7 @@ namespace Assignment_2021
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panelGame = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.buttonStartGame = new System.Windows.Forms.Button();
@@ -40,6 +41,7 @@ namespace Assignment_2021
             this.saveGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panelGame.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -144,6 +146,10 @@ namespace Assignment_2021
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -155,6 +161,7 @@ namespace Assignment_2021
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.panelGame.ResumeLayout(false);
             this.panelGame.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
@@ -177,6 +184,7 @@ namespace Assignment_2021
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonStartGame;
         private System.Windows.Forms.TextBox textBoxUsername;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 

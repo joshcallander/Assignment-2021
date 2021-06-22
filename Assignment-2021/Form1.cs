@@ -20,6 +20,7 @@ namespace Assignment_2021
             InitializeComponent();
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
 
+            
         }
 
 
@@ -48,6 +49,9 @@ namespace Assignment_2021
         string[] columnLetters = new string[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" };
 
         bool isMouseDown = false;
+
+        int shipX = 20;
+        int shipY = 750;
 
         private void buttonStartGame_Click(object sender, EventArgs e)
         {
@@ -101,20 +105,24 @@ namespace Assignment_2021
             isMouseDown = false;
         }
 
+        int mouseDownX = 0;
+        int mouseDownY = 0;
+
         private void panelGame_MouseMove(object sender, MouseEventArgs e)
         {
-
-            int i = 2;
-                if (isMouseDown == true)
+            if (isMouseDown == true)
+            {
+                for (int i = 0; i < rectList.Count; i++)
                 {
                     var targetingRectangle = rectList[i];
 
-                rectList.RemoveAt(i);
-
-                rectList.Add();
-
-                    targetingRectangle.X = e.X;
-                targetingRectangle.Y = e.Y;
+                    if (mouseDownX >= targetingRectangle.X && mouseDownX <= targetingRectangle.X + targetingRectangle.Width &&
+                        mouseDownY >= targetingRectangle.Y && mouseDownX <= targetingRectangle.Y + targetingRectangle.Height)
+                    {
+                        rectList.RemoveAt(i);
+                        rectList.Insert(i, new Rectangle(MousePosition.X, MousePosition.Y, targetingRectangle.Width, targetingRectangle.Height));
+                    }
+                }
 
                 //if (targetingRectangle.Right > panelGame.Width)
                 //{
@@ -136,25 +144,38 @@ namespace Assignment_2021
                 //    targetingRectangle.Y = panelGame.Height - rectList[i].Height;
                 //}
 
-                //Refresh();
+                Refresh();
             }
-
         }
+
+        
 
         private void panelGame_MouseDown(object sender, MouseEventArgs e)
         {
             isMouseDown = true;
+            mouseDownX = e.X;
+            mouseDownY = e.Y;
         }
 
         private void panelGame_Paint(object sender, PaintEventArgs e)
         {
-            username = textBoxUsername.Text;
+            SolidBrush brush = new SolidBrush(Color.Black);
+
+            for (int i = 0; i < rectList.Count; i++)
+            {
+                e.Graphics.FillRectangle(brush, rectList[i]);
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            Graphics g = panelGame.CreateGraphics();
 
             int x = 66;
             int y = 66;
             int width = 66;
             int height = 66;
-            
+
             Pen pen1 = new Pen(Color.Black, 2);
 
             Font drawFont = new Font("Arial", 14);
@@ -168,14 +189,14 @@ namespace Assignment_2021
             for (int row = 1; row <= 10; row++)
             {
                 x = 0;
-                e.Graphics.DrawRectangle(pen1, x, y, width, height);
-                e.Graphics.DrawString(row.ToString(), drawFont, brush, (x + 40), (y + 26), drawFormat);
+                g.DrawRectangle(pen1, x, y, width, height);
+                g.DrawString(row.ToString(), drawFont, brush, (x + 40), (y + 26), drawFormat);
 
                 x = 66;
 
                 for (int column = 0; column < 10; column++)
                 {
-                    e.Graphics.DrawRectangle(pen1, x, y, width, height);
+                    g.DrawRectangle(pen1, x, y, width, height);
                     x += width;
                 }
 
@@ -188,14 +209,17 @@ namespace Assignment_2021
 
             for (int column = 1; column <= 10; column++)
             {
-                e.Graphics.DrawRectangle(pen1, x, y, width, height);
+                g.DrawRectangle(pen1, x, y, width, height);
 
-                e.Graphics.DrawString(columnLetters[column - 1], drawFont, brush, (x + 40), (y + 26), drawFormat);
+                g.DrawString(columnLetters[column - 1], drawFont, brush, (x + 40), (y + 26), drawFormat);
                 x += width;
             }
 
-            int shipX = 20;
-            int shipY = 750;
+            if (isMouseDown == false)
+            {
+                shipX = 20;
+                shipY = 750;
+            }
 
             string[] shipDimensionsLetter = new string[] { "A", "B", "D", "D", "G", "J", "A", "A", "J", "J", "E", "J" };
             int[] shipDimensionsNumber = new int[] { 1, 1, 1, 3, 1, 1, 3, 6, 3, 4, 6, 6 };
@@ -203,13 +227,17 @@ namespace Assignment_2021
             for (int ship = 0; ship < shipDimensionsLetter.Length; ship += 2)
             {
                 rectList.Add(new Rectangle(shipX, shipY, CalculateWidth(shipDimensionsLetter[ship], shipDimensionsLetter[ship + 1]), CalculateHeight(shipDimensionsNumber[ship], shipDimensionsNumber[ship + 1])));
-                shipX += CalculateWidth(shipDimensionsLetter[ship], shipDimensionsLetter[ship + 1]) + 44;
-            }
 
-            for (int i = 0; i < rectList.Count; i++)
-            {
-                e.Graphics.FillRectangle(brush, rectList[i]);
+                if (isMouseDown == false)
+                {
+                    shipX += CalculateWidth(shipDimensionsLetter[ship], shipDimensionsLetter[ship + 1]) + 44;
+                }
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            
         }
     }
 }
