@@ -42,15 +42,11 @@ namespace Assignment_2021
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.panelGame.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelGame
             // 
-            this.panelGame.Controls.Add(this.label1);
-            this.panelGame.Controls.Add(this.buttonStartGame);
-            this.panelGame.Controls.Add(this.textBoxUsername);
             this.panelGame.Location = new System.Drawing.Point(0, 27);
             this.panelGame.Name = "panelGame";
             this.panelGame.Size = new System.Drawing.Size(1170, 1034);
@@ -63,7 +59,7 @@ namespace Assignment_2021
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(134, 46);
+            this.label1.Location = new System.Drawing.Point(1188, 84);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(255, 78);
             this.label1.TabIndex = 2;
@@ -72,7 +68,7 @@ namespace Assignment_2021
             // 
             // buttonStartGame
             // 
-            this.buttonStartGame.Location = new System.Drawing.Point(260, 127);
+            this.buttonStartGame.Location = new System.Drawing.Point(1295, 185);
             this.buttonStartGame.Name = "buttonStartGame";
             this.buttonStartGame.Size = new System.Drawing.Size(82, 23);
             this.buttonStartGame.TabIndex = 1;
@@ -82,7 +78,7 @@ namespace Assignment_2021
             // 
             // textBoxUsername
             // 
-            this.textBoxUsername.Location = new System.Drawing.Point(153, 131);
+            this.textBoxUsername.Location = new System.Drawing.Point(1188, 189);
             this.textBoxUsername.Name = "textBoxUsername";
             this.textBoxUsername.Size = new System.Drawing.Size(100, 20);
             this.textBoxUsername.TabIndex = 0;
@@ -93,7 +89,7 @@ namespace Assignment_2021
             this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1170, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(1455, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -154,7 +150,10 @@ namespace Assignment_2021
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1170, 1061);
+            this.ClientSize = new System.Drawing.Size(1455, 1061);
+            this.Controls.Add(this.buttonStartGame);
+            this.Controls.Add(this.textBoxUsername);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.panelGame);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -162,8 +161,6 @@ namespace Assignment_2021
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.panelGame.ResumeLayout(false);
-            this.panelGame.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
