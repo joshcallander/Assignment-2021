@@ -109,24 +109,21 @@ namespace Assignment_2021
             {
                 for (int column = 1; column <= 10; column++)
                 {
-                    if (((mouseDownY <= ((row * 66) + 66)) ))
-                        //&& (mouseDownY + 11 >= (column * 66) || mouseDownY - 11 <= (column * 66))
+                    for (int i = 0; i < rectList.Count; i++)
                     {
-                        for (int i = 0; i < rectList.Count; i++)
-                        {
-                            var targetingRectangle = rectList[i];
+                        var targetingRectangle = rectList[i];
 
-                            if (mouseDownX >= targetingRectangle.X && mouseDownX <= targetingRectangle.X + targetingRectangle.Width &&
-                                mouseDownY >= targetingRectangle.Y && mouseDownY <= targetingRectangle.Y + targetingRectangle.Height)
+                        if (mouseDownX >= targetingRectangle.X && mouseDownX <= targetingRectangle.X + targetingRectangle.Width && mouseDownY >= targetingRectangle.Y && mouseDownY <= targetingRectangle.Y + targetingRectangle.Height)
+                        {
+                            if (targetingRectangle.Y >= ((row * 66)) && targetingRectangle.Y <= ((row * 66) + 66) && targetingRectangle.X >= ((column * 66)) && targetingRectangle.X <= ((column * 66) + 66))
                             {
                                 isMouseDown = false;
                                 rectList.RemoveAt(i);
-                                rectList.Insert(i, new Rectangle(2 * 66, ((66 * row) + (11 * row) + 66), targetingRectangle.Width, targetingRectangle.Height));
+                                rectList.Insert(i, new Rectangle(((66 * column) + 11), ((66 * row) + 11), targetingRectangle.Width, targetingRectangle.Height));
                                 Refresh();
+                                mouseDownX = e.X;
+                                mouseDownY = e.Y;
                             }
-
-                            mouseDownX = e.X;
-                            mouseDownY = e.Y;
                         }
                     }
                 }
