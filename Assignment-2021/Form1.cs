@@ -15,6 +15,8 @@ namespace Assignment_2021
         string username = "";
         List<Rectangle> rectList = new List<Rectangle>();
 
+        // can have modes for easy, moderate and hard that changes the grid size
+
         public Form1()
         {
             InitializeComponent();
@@ -46,17 +48,14 @@ namespace Assignment_2021
 
         Random rand = new Random();
 
-        string[] columnLetters = new string[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" };
+        string[] columnLetters = new string[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "I", "J", "I", "J" };
 
         bool isMouseDown = false;
 
         int shipX = 20;
         int shipY = 750;
 
-        private void buttonStartGame_Click(object sender, EventArgs e)
-        {
-
-        }
+        int gridSize = 0;
 
         private int CalculateWidth(string startLetter, string endLetter)
         {
@@ -84,7 +83,7 @@ namespace Assignment_2021
             int startNumberValue = 0;
             int endNumberValue = 0;
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < gridSize; i++)
             {
                 if (startNumber == i)
                 {
@@ -105,9 +104,9 @@ namespace Assignment_2021
 
         private void panelGame_MouseUp(object sender, MouseEventArgs e)
         {
-            for (int row = 1; row <= 10; row++)
+            for (int row = 1; row <= gridSize; row++)
             {
-                for (int column = 1; column <= 10; column++)
+                for (int column = 1; column <= gridSize; column++)
                 {
                     for (int i = 0; i < rectList.Count; i++)
                     {
@@ -130,8 +129,6 @@ namespace Assignment_2021
             }
         }
 
-        
-
         private void panelGame_MouseMove(object sender, MouseEventArgs e)
         {
             if (isMouseDown == true)
@@ -140,8 +137,7 @@ namespace Assignment_2021
                 {
                     var targetingRectangle = rectList[i];
 
-                    if (mouseDownX >= targetingRectangle.X && mouseDownX <= targetingRectangle.X + targetingRectangle.Width &&
-                        mouseDownY >= targetingRectangle.Y && mouseDownY <= targetingRectangle.Y + targetingRectangle.Height)
+                    if (mouseDownX >= targetingRectangle.X && mouseDownX <= targetingRectangle.X + targetingRectangle.Width && mouseDownY >= targetingRectangle.Y && mouseDownY <= targetingRectangle.Y + targetingRectangle.Height)
                     {
                         rectList.RemoveAt(i);
                         rectList.Insert(i, new Rectangle(targetingRectangle.X + e.X - mouseDownX, targetingRectangle.Y + e.Y - mouseDownY, targetingRectangle.Width, targetingRectangle.Height));
@@ -207,12 +203,12 @@ namespace Assignment_2021
 
             drawFormat.FormatFlags = StringFormatFlags.DirectionRightToLeft;
 
-            for (int row = 1; row <= 10; row++)
+            for (int row = 1; row <= gridSize; row++)
             {
                 e.Graphics.DrawRectangle(pen1, 0, y, width, height);
                 e.Graphics.DrawString(row.ToString(), drawFont, brush, 40, (y + 26), drawFormat);
 
-                for (int column = 0; column < 10; column++)
+                for (int column = 0; column < gridSize; column++)
                 {
                     e.Graphics.DrawRectangle(pen1, x, y, width, height);
                     x += width;
@@ -224,21 +220,19 @@ namespace Assignment_2021
 
             y = 0;
 
-            for (int column = 1; column <= 10; column++)
+            for (int column = 1; column <= gridSize; column++)
             {
                 e.Graphics.DrawRectangle(pen1, x, y, width, height);
                 e.Graphics.DrawString(columnLetters[column - 1], drawFont, brush, (x + 40), (y + 26), drawFormat);
 
                 x += width;
-            }
+            } 
         }
 
-        private void Form1_Load(object sender, EventArgs e)
+        private void refreshGame()
         {
-            Graphics g = panelGame.CreateGraphics();
-
-                shipX = 20;
-                shipY = 750;
+            shipX = 20;
+            shipY = 750;
 
             string[] shipDimensionsLetter = new string[] { "A", "B", "D", "D", "G", "J", "A", "A", "J", "J", "E", "J" };
             int[] shipDimensionsNumber = new int[] { 1, 1, 1, 3, 1, 1, 3, 6, 3, 4, 6, 6 };
@@ -252,11 +246,26 @@ namespace Assignment_2021
                     shipX += CalculateWidth(shipDimensionsLetter[ship], shipDimensionsLetter[ship + 1]) + 44;
                 }
             }
+
+            Refresh();
         }
 
-        private void timer1_Tick(object sender, EventArgs e)
+        private void buttonEasy_Click(object sender, EventArgs e)
         {
+            gridSize = 8;
+            refreshGame();
+        }
 
+        private void buttonMedium_Click(object sender, EventArgs e)
+        {
+            gridSize = 10;
+            refreshGame();
+        }
+
+        private void buttonHard_Click(object sender, EventArgs e)
+        {
+            gridSize = 12;
+            refreshGame();
         }
     }
 }

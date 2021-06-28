@@ -32,7 +32,6 @@ namespace Assignment_2021
             this.components = new System.ComponentModel.Container();
             this.panelGame = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
-            this.buttonStartGame = new System.Windows.Forms.Button();
             this.textBoxUsername = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,11 +41,19 @@ namespace Assignment_2021
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
+            this.buttonEasy = new System.Windows.Forms.Button();
+            this.buttonMedium = new System.Windows.Forms.Button();
+            this.buttonHard = new System.Windows.Forms.Button();
+            this.panelGame.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelGame
             // 
+            this.panelGame.Controls.Add(this.textBoxUsername);
+            this.panelGame.Controls.Add(this.buttonEasy);
+            this.panelGame.Controls.Add(this.buttonMedium);
+            this.panelGame.Controls.Add(this.buttonHard);
             this.panelGame.Location = new System.Drawing.Point(0, 27);
             this.panelGame.Name = "panelGame";
             this.panelGame.Size = new System.Drawing.Size(1170, 1034);
@@ -66,21 +73,15 @@ namespace Assignment_2021
             this.label1.Text = "Welcome To My Amazing Game!\r\n\r\nThis game operates like battle ships.\r\n\r\nTo begin " +
     "enter your username and click \"Start Game\r\n\"";
             // 
-            // buttonStartGame
-            // 
-            this.buttonStartGame.Location = new System.Drawing.Point(1295, 185);
-            this.buttonStartGame.Name = "buttonStartGame";
-            this.buttonStartGame.Size = new System.Drawing.Size(82, 23);
-            this.buttonStartGame.TabIndex = 1;
-            this.buttonStartGame.Text = "Start Game";
-            this.buttonStartGame.UseVisualStyleBackColor = true;
-            this.buttonStartGame.Click += new System.EventHandler(this.buttonStartGame_Click);
-            // 
             // textBoxUsername
             // 
-            this.textBoxUsername.Location = new System.Drawing.Point(1188, 189);
+            this.textBoxUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBoxUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBoxUsername.ForeColor = System.Drawing.SystemColors.WindowFrame;
+            this.textBoxUsername.Location = new System.Drawing.Point(670, 113);
+            this.textBoxUsername.Margin = new System.Windows.Forms.Padding(10);
             this.textBoxUsername.Name = "textBoxUsername";
-            this.textBoxUsername.Size = new System.Drawing.Size(100, 20);
+            this.textBoxUsername.Size = new System.Drawing.Size(138, 22);
             this.textBoxUsername.TabIndex = 0;
             // 
             // menuStrip1
@@ -142,17 +143,45 @@ namespace Assignment_2021
             this.exitToolStripMenuItem.Text = "Exit";
             this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
-            // timer1
+            // buttonEasy
             // 
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.buttonEasy.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonEasy.Location = new System.Drawing.Point(670, 178);
+            this.buttonEasy.Name = "buttonEasy";
+            this.buttonEasy.Size = new System.Drawing.Size(138, 47);
+            this.buttonEasy.TabIndex = 3;
+            this.buttonEasy.Text = "Easy";
+            this.buttonEasy.UseVisualStyleBackColor = true;
+            this.buttonEasy.Click += new System.EventHandler(this.buttonEasy_Click);
+            // 
+            // buttonMedium
+            // 
+            this.buttonMedium.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonMedium.Location = new System.Drawing.Point(833, 178);
+            this.buttonMedium.Name = "buttonMedium";
+            this.buttonMedium.Padding = new System.Windows.Forms.Padding(10);
+            this.buttonMedium.Size = new System.Drawing.Size(138, 47);
+            this.buttonMedium.TabIndex = 4;
+            this.buttonMedium.Text = "Medium";
+            this.buttonMedium.UseVisualStyleBackColor = true;
+            this.buttonMedium.Click += new System.EventHandler(this.buttonMedium_Click);
+            // 
+            // buttonHard
+            // 
+            this.buttonHard.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonHard.Location = new System.Drawing.Point(504, 178);
+            this.buttonHard.Name = "buttonHard";
+            this.buttonHard.Size = new System.Drawing.Size(138, 47);
+            this.buttonHard.TabIndex = 5;
+            this.buttonHard.Text = "Hard";
+            this.buttonHard.UseVisualStyleBackColor = true;
+            this.buttonHard.Click += new System.EventHandler(this.buttonHard_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1455, 1061);
-            this.Controls.Add(this.buttonStartGame);
-            this.Controls.Add(this.textBoxUsername);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panelGame);
             this.Controls.Add(this.menuStrip1);
@@ -160,7 +189,8 @@ namespace Assignment_2021
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.panelGame.ResumeLayout(false);
+            this.panelGame.PerformLayout();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -179,9 +209,11 @@ namespace Assignment_2021
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem newGameToolStripMenuItem;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button buttonStartGame;
         private System.Windows.Forms.TextBox textBoxUsername;
         private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Button buttonEasy;
+        private System.Windows.Forms.Button buttonMedium;
+        private System.Windows.Forms.Button buttonHard;
     }
 }
 
