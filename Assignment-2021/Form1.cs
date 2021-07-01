@@ -15,14 +15,16 @@ namespace Assignment_2021
         string username = "";
         List<Rectangle> rectList = new List<Rectangle>();
 
-        // can have modes for easy, moderate and hard that changes the grid size
+        Random rand = new Random();
 
+        // can have modes for easy, moderate and hard that changes the grid size
+        
         public Form1()
         {
             InitializeComponent();
             SetStyle(ControlStyles.OptimizedDoubleBuffer, true);
 
-
+            UpdateStyles();
         }
 
 
@@ -45,8 +47,6 @@ namespace Assignment_2021
         {
             Application.Exit();
         }
-
-        Random rand = new Random();
 
         string[] columnLetters = new string[] { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "I", "J", "I", "J" };
 
@@ -129,6 +129,36 @@ namespace Assignment_2021
             }
         }
 
+        List<string> potentialPositions = new List<string>() { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J" };
+
+
+
+        private void GenerateAIShips()
+        {
+            string[] shipDimensionsLetter = new string[] { "A", "B", "D", "D", "G", "J", "A", "A", "J", "J", "E", "J" };
+            int[] shipDimensionsNumber = new int[] { 1, 1, 1, 3, 1, 1, 3, 6, 3, 4, 6, 6 };
+
+            for (int ship = 0; ship < shipDimensionsLetter.Length; ship += 2)
+            {
+                int aiX = rand.Next(panelGame.Width);
+                int aiY = rand.Next(panelGame.Height);
+
+                if (aiX == 0)
+                {
+
+                }
+
+                rectList.Add(new Rectangle(aiX, aiY, CalculateWidth(shipDimensionsLetter[ship], shipDimensionsLetter[ship + 1]), CalculateHeight(shipDimensionsNumber[ship], shipDimensionsNumber[ship + 1])));
+
+                if (isMouseDown == false)
+                {
+                    shipX += CalculateWidth(shipDimensionsLetter[ship], shipDimensionsLetter[ship + 1]) + 44;
+                }
+            }
+
+            Refresh();
+        }
+
         private void panelGame_MouseMove(object sender, MouseEventArgs e)
         {
             if (isMouseDown == true)
@@ -170,8 +200,6 @@ namespace Assignment_2021
                 Refresh();
             }
         }
-
-
 
         private void panelGame_MouseDown(object sender, MouseEventArgs e)
         {
