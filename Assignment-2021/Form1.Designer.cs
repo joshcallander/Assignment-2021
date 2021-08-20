@@ -29,170 +29,89 @@ namespace Assignment_2021
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.panelGame = new System.Windows.Forms.Panel();
+            this.buttonExit = new System.Windows.Forms.Button();
+            this.buttonHelp = new System.Windows.Forms.Button();
+            this.buttonStart = new System.Windows.Forms.Button();
+            this.buttonHighScores = new System.Windows.Forms.Button();
+            this.labelHeading = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBoxUsername = new System.Windows.Forms.TextBox();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.newGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.openGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.saveGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
-            this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.buttonEasy = new System.Windows.Forms.Button();
-            this.buttonMedium = new System.Windows.Forms.Button();
-            this.buttonHard = new System.Windows.Forms.Button();
-            this.panelGame.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // panelGame
+            // buttonExit
             // 
-            this.panelGame.Controls.Add(this.textBoxUsername);
-            this.panelGame.Controls.Add(this.buttonEasy);
-            this.panelGame.Controls.Add(this.buttonMedium);
-            this.panelGame.Controls.Add(this.buttonHard);
-            this.panelGame.Location = new System.Drawing.Point(0, 27);
-            this.panelGame.Name = "panelGame";
-            this.panelGame.Size = new System.Drawing.Size(1170, 1034);
-            this.panelGame.TabIndex = 0;
-            this.panelGame.Paint += new System.Windows.Forms.PaintEventHandler(this.panelGame_Paint);
-            this.panelGame.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panelGame_MouseDown);
-            this.panelGame.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelGame_MouseMove);
-            this.panelGame.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panelGame_MouseUp);
+            this.buttonExit.Location = new System.Drawing.Point(402, 128);
+            this.buttonExit.Name = "buttonExit";
+            this.buttonExit.Size = new System.Drawing.Size(75, 23);
+            this.buttonExit.TabIndex = 2;
+            this.buttonExit.Text = "Exit";
+            this.buttonExit.UseVisualStyleBackColor = true;
+            this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
+            // 
+            // buttonHelp
+            // 
+            this.buttonHelp.Location = new System.Drawing.Point(135, 128);
+            this.buttonHelp.Name = "buttonHelp";
+            this.buttonHelp.Size = new System.Drawing.Size(108, 23);
+            this.buttonHelp.TabIndex = 1;
+            this.buttonHelp.Text = "How To Play";
+            this.buttonHelp.UseVisualStyleBackColor = true;
+            this.buttonHelp.Click += new System.EventHandler(this.buttonHelp_Click);
+            // 
+            // buttonStart
+            // 
+            this.buttonStart.Location = new System.Drawing.Point(27, 128);
+            this.buttonStart.Name = "buttonStart";
+            this.buttonStart.Size = new System.Drawing.Size(75, 23);
+            this.buttonStart.TabIndex = 0;
+            this.buttonStart.Text = "Start";
+            this.buttonStart.UseVisualStyleBackColor = true;
+            this.buttonStart.Click += new System.EventHandler(this.buttonStart_Click);
+            // 
+            // buttonHighScores
+            // 
+            this.buttonHighScores.Location = new System.Drawing.Point(279, 128);
+            this.buttonHighScores.Name = "buttonHighScores";
+            this.buttonHighScores.Size = new System.Drawing.Size(91, 23);
+            this.buttonHighScores.TabIndex = 3;
+            this.buttonHighScores.Text = "High Scores";
+            this.buttonHighScores.UseVisualStyleBackColor = true;
+            this.buttonHighScores.Click += new System.EventHandler(this.buttonHighScores_Click);
+            // 
+            // labelHeading
+            // 
+            this.labelHeading.AutoSize = true;
+            this.labelHeading.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelHeading.Location = new System.Drawing.Point(20, 20);
+            this.labelHeading.Name = "labelHeading";
+            this.labelHeading.Size = new System.Drawing.Size(175, 39);
+            this.labelHeading.TabIndex = 4;
+            this.labelHeading.Text = "Monopoly";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(1188, 84);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(24, 78);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(255, 78);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Welcome To My Amazing Game!\r\n\r\nThis game operates like battle ships.\r\n\r\nTo begin " +
-    "enter your username and click \"Start Game\r\n\"";
-            // 
-            // textBoxUsername
-            // 
-            this.textBoxUsername.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBoxUsername.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBoxUsername.ForeColor = System.Drawing.SystemColors.WindowFrame;
-            this.textBoxUsername.Location = new System.Drawing.Point(670, 113);
-            this.textBoxUsername.Margin = new System.Windows.Forms.Padding(10);
-            this.textBoxUsername.Name = "textBoxUsername";
-            this.textBoxUsername.Size = new System.Drawing.Size(138, 22);
-            this.textBoxUsername.TabIndex = 0;
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fileToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1455, 24);
-            this.menuStrip1.TabIndex = 1;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // fileToolStripMenuItem
-            // 
-            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.newGameToolStripMenuItem,
-            this.openGameToolStripMenuItem,
-            this.saveGameToolStripMenuItem,
-            this.toolStripMenuItem1,
-            this.exitToolStripMenuItem});
-            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
-            this.fileToolStripMenuItem.Text = "File";
-            // 
-            // newGameToolStripMenuItem
-            // 
-            this.newGameToolStripMenuItem.Name = "newGameToolStripMenuItem";
-            this.newGameToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
-            this.newGameToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
-            this.newGameToolStripMenuItem.Text = "New Game";
-            this.newGameToolStripMenuItem.Click += new System.EventHandler(this.newGameToolStripMenuItem_Click);
-            // 
-            // openGameToolStripMenuItem
-            // 
-            this.openGameToolStripMenuItem.Name = "openGameToolStripMenuItem";
-            this.openGameToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
-            this.openGameToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
-            this.openGameToolStripMenuItem.Text = "Open Game...";
-            this.openGameToolStripMenuItem.Click += new System.EventHandler(this.openGameToolStripMenuItem_Click);
-            // 
-            // saveGameToolStripMenuItem
-            // 
-            this.saveGameToolStripMenuItem.Name = "saveGameToolStripMenuItem";
-            this.saveGameToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.saveGameToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
-            this.saveGameToolStripMenuItem.Text = "Save Game...";
-            this.saveGameToolStripMenuItem.Click += new System.EventHandler(this.saveGameToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem1
-            // 
-            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(186, 6);
-            // 
-            // exitToolStripMenuItem
-            // 
-            this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.E)));
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(189, 22);
-            this.exitToolStripMenuItem.Text = "Exit";
-            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
-            // 
-            // buttonEasy
-            // 
-            this.buttonEasy.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonEasy.Location = new System.Drawing.Point(670, 178);
-            this.buttonEasy.Name = "buttonEasy";
-            this.buttonEasy.Size = new System.Drawing.Size(138, 47);
-            this.buttonEasy.TabIndex = 3;
-            this.buttonEasy.Text = "Easy";
-            this.buttonEasy.UseVisualStyleBackColor = true;
-            this.buttonEasy.Click += new System.EventHandler(this.buttonEasy_Click);
-            // 
-            // buttonMedium
-            // 
-            this.buttonMedium.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonMedium.Location = new System.Drawing.Point(833, 178);
-            this.buttonMedium.Name = "buttonMedium";
-            this.buttonMedium.Padding = new System.Windows.Forms.Padding(10);
-            this.buttonMedium.Size = new System.Drawing.Size(138, 47);
-            this.buttonMedium.TabIndex = 4;
-            this.buttonMedium.Text = "Medium";
-            this.buttonMedium.UseVisualStyleBackColor = true;
-            this.buttonMedium.Click += new System.EventHandler(this.buttonMedium_Click);
-            // 
-            // buttonHard
-            // 
-            this.buttonHard.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.buttonHard.Location = new System.Drawing.Point(504, 178);
-            this.buttonHard.Name = "buttonHard";
-            this.buttonHard.Size = new System.Drawing.Size(138, 47);
-            this.buttonHard.TabIndex = 5;
-            this.buttonHard.Text = "Hard";
-            this.buttonHard.UseVisualStyleBackColor = true;
-            this.buttonHard.Click += new System.EventHandler(this.buttonHard_Click);
+            this.label1.Size = new System.Drawing.Size(308, 16);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Welcome! To begin, click one of the buttons below.";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1455, 1061);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.panelGame);
-            this.Controls.Add(this.menuStrip1);
-            this.MainMenuStrip = this.menuStrip1;
+            this.Controls.Add(this.labelHeading);
+            this.Controls.Add(this.buttonHighScores);
+            this.Controls.Add(this.buttonStart);
+            this.Controls.Add(this.buttonHelp);
+            this.Controls.Add(this.buttonExit);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "Form1";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
-            this.panelGame.ResumeLayout(false);
-            this.panelGame.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -200,20 +119,12 @@ namespace Assignment_2021
 
         #endregion
 
-        private System.Windows.Forms.Panel panelGame;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem saveGameToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem openGameToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem newGameToolStripMenuItem;
+        private System.Windows.Forms.Button buttonExit;
+        private System.Windows.Forms.Button buttonHelp;
+        private System.Windows.Forms.Button buttonStart;
+        private System.Windows.Forms.Button buttonHighScores;
+        private System.Windows.Forms.Label labelHeading;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBoxUsername;
-        private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Button buttonEasy;
-        private System.Windows.Forms.Button buttonMedium;
-        private System.Windows.Forms.Button buttonHard;
     }
 }
 
